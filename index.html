@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Lakes</title>
+    <title>The Blue Lakes Project</title>
 
     <style>
         body {
@@ -64,7 +64,7 @@
 
 <body>
     <div id="container">
-        <img id="logo" src="https://raw.githubusercontent.com/TheLandBetweenGit/Blue_Lakes_2024/main/Blue_Lakes_Logo.png" alt="Blue Lakes Logo">
+        <img id="logo" src="https://raw.githubusercontent.com/TheLandBetweenGit/The_Blue_Lakes_Project/main/Blue_Lakes_Logo.png" alt="Blue Lakes Logo">
         <div id="map"></div>
     </div>
 
@@ -106,7 +106,7 @@
             // Check if the file exists in Temperature folders
             var temperatureLink = null;
             for (var i = 0; i < temperatureFolders.length; i++) {
-                temperatureLink = "https://raw.githubusercontent.com/TheLandBetweenGit/Blue_Lakes_2024/main/" + temperatureFolders[i] + "/" + encodedLakeName + "_temperature_graph.jpg";
+                temperatureLink = "https://raw.githubusercontent.com/TheLandBetweenGit/The_Blue_Lakes_Project/main/" + temperatureFolders[i] + "/" + encodedLakeName + "_temperature_graph.jpg";
                 var temperatureRequest = new XMLHttpRequest();
                 temperatureRequest.open('HEAD', temperatureLink, false);
                 temperatureRequest.send();
@@ -129,7 +129,7 @@
             // Check if the file exists in Dissolved Oxygen folders
             var doLink = null;
             for (var j = 0; j < doFolders.length; j++) {
-                doLink = "https://raw.githubusercontent.com/TheLandBetweenGit/Blue_Lakes_2024/main/" + doFolders[j] + "/" + encodedLakeName + "_dissolved_oxygen_graph.jpg";
+                doLink = "https://raw.githubusercontent.com/TheLandBetweenGit/The_Blue_Lakes_Project/main/" + doFolders[j] + "/" + encodedLakeName + "_dissolved_oxygen_graph.jpg";
                 var doRequest = new XMLHttpRequest();
                 doRequest.open('HEAD', doLink, false);
                 doRequest.send();
@@ -152,7 +152,7 @@
             // Check if the file exists in Phosphorus folders
             var phosphorusLink = null;
             for (var k = 0; k < phosphorusFolders.length; k++) {
-                phosphorusLink = "https://raw.githubusercontent.com/TheLandBetweenGit/Blue_Lakes_2024/main/" + phosphorusFolders[k] + "/" + encodedLakeName + "_phosphorus_graph.jpg";
+                phosphorusLink = "https://raw.githubusercontent.com/TheLandBetweenGit/The_Blue_Lakes_Project/main/" + phosphorusFolders[k] + "/" + encodedLakeName + "_phosphorus_graph.jpg";
                 var phosphorusRequest = new XMLHttpRequest();
                 phosphorusRequest.open('HEAD', phosphorusLink, false);
                 phosphorusRequest.send();
@@ -172,11 +172,17 @@
             layer.bindPopup(popupContent);
         }
 
-        var geojsonLayer = new L.GeoJSON.AJAX("https://raw.githubusercontent.com/TheLandBetweenGit/Blue_Lakes_2024/main/OHN_ALL_Cleaned.geojson", {
+        // Updated GeoJSON layer URLs
+        var geojsonLayer1 = new L.GeoJSON.AJAX("https://raw.githubusercontent.com/TheLandBetweenGit/The_Blue_Lakes_Project/main/OHN_Clip_1.geojson", {
             onEachFeature: onEachFeature,
         });
 
-        geojsonLayer.addTo(map);
+        var geojsonLayer2 = new L.GeoJSON.AJAX("https://raw.githubusercontent.com/TheLandBetweenGit/The_Blue_Lakes_Project/main/OHN_Clip_2.geojson", {
+            onEachFeature: onEachFeature,
+        });
+
+        geojsonLayer1.addTo(map);
+        geojsonLayer2.addTo(map);
 
         function toggleCollapsible(elementId) {
             var content = document.getElementById(elementId);
@@ -190,5 +196,6 @@
 </body>
 
 </html>
+
 
 
